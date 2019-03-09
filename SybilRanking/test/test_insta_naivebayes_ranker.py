@@ -1,17 +1,19 @@
 import SybilRanking as sb
 
-# report classficition accuracy
-sybilRanker = sb.ranker.InstaNaiveBayesSybilRanker()
-sybilRanker.validate()
+def test_insta_naivebayes_ranker():
+	# report classficition accuracy
+	sybilRanker = sb.ranker.InstaNaiveBayesSybilRanker()
+	sybilRanker.validate()
 
-# peform ranking
-twitterUserList = [
-	'mikeitgeek',
-]
+	# peform ranking
+	twitterUserList = [
+		'mikeitgeek',
+	]
 
-print("username,rank")
-for username in twitterUserList:
-	print ('{},{}'.format(
-		username,
-		sybilRanker.getRank(username))
-	)
+	print("\tusername,rank")
+	for username in twitterUserList:
+		print ('\t{},{}'.format(
+			username,
+			sybilRanker.getRank(username))
+		)
+	return True

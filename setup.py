@@ -21,9 +21,11 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     include_package_data = True,
-    # package_data={
-    #     'SybilRanking': ['*.csv'],
-    # },
+    package_data={
+        'SybilRanking': ['model/traindata/*.csv',
+                         'model/modelfiles/*.joblib'
+                         ],
+    },
     # data_files=\
     #     [
     #         ('modelfiles', ['SybilRanking/model/modelfiles/TwitterNaiveBayesSybilRanker.joblib',

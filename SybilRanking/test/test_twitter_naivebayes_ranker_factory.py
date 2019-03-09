@@ -1,3 +1,6 @@
 import SybilRanking as sb
-tnbrf = sb.model.TwitterNaiveBayesSybilRankerFactory()
-tnbrf.validate()
+def test_twitter_naivebayes_ranker_factory():
+    tnbrf = sb.model.TwitterNaiveBayesSybilRankerFactory()
+    tnbrf.validate()
+    return True
+    

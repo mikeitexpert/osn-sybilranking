@@ -641,28 +641,22 @@ class InstagramScraper(object):
         """Crawls through and downloads user's media"""
         self.session.headers = {'user-agent': STORIES_UA}
         try:
-            with open(self.csvOuputfilename, 'w') as outputFile:
-                csvwriter = csv.writer(outputFile)
-                csvwriter.writerow(['username', 'following_count', 'follower_count', 'is_verified', 'post_count'])
-                usersData = []
-                self.posts = []
-                self.last_scraped_filemtime = 0
-                greatest_timestamp = 0
-                future_to_item = {}
+            self.last_scraped_filemtime = 0
+            greatest_timestamp = 0
+            future_to_item = {}
 
-                dst = self.get_dst_dir(username)
+            dst = self.get_dst_dir(username)
 
-                # Get the user metadata.
-                shared_data = self.get_shared_data(username)
-                usersData.append( shared_data )                
-                return [
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["username"],
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_follow"]["count"],
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_followed_by"]["count"],
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["is_verified"],
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_felix_video_timeline"]["count"] +
-                     shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["count"],
-                     ]
+            # Get the user metadata.
+            shared_data = self.get_shared_data(username)
+            return [
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["username"],
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_follow"]["count"],
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_followed_by"]["count"],
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["is_verified"],
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_felix_video_timeline"]["count"] +
+                 shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["count"],
+                 ]
         finally:
             self.quit = True
             self.logout()

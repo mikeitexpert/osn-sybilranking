@@ -2,5 +2,5 @@
 	"proxies": {"http": "http://127.0.0.1:2080", "https": "https://127.0.0.1:2080"},
 	"twitter_access_token": "twitter_access_token",
 	"insta_username": "insta_username",
-	"insta_password": "insta_password",
+	"insta_password": "insta_password"
 }

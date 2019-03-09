@@ -1,1 +1,2 @@
 from .TwitterNaiveBayesSybilRanker import TwitterNaiveBayesSybilRanker
+from .InstaNaiveBayesSybilRanker import InstaNaiveBayesSybilRanker

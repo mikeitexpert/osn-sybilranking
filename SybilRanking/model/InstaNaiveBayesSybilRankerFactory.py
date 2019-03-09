@@ -27,36 +27,31 @@ class InstaNaiveBayesSybilRankerFactory:
 		print(pd.__path__)
 		self.data = pd.read_csv( self.trainDataFilename, sep=",",
 									encoding='latin1')
-		data = self.data
-		data.fillna('', inplace=True)
+		# data = self.data
+		# data.fillna('', inplace=True)
+		#
+		# data = pd.read_csv( self.trainDataFilename,
+		# 	sep=",", encoding='latin1' )
 
-		data = pd.read_csv( self.trainDataFilename,
-			sep=",", encoding='latin1' )
-
-		data = data.drop(
-				['username'], 1)
-
-		X = data.drop('bot', 1)
-		Y = data['bot']
+		self.data = self.data.drop(['username'], 1)
+		self.X = self.data.drop('bot', 1)
+		self.Y = self.data['bot']
 
 		# create model
 		self.gnb = BernoulliNB()
 
 		# Train classifier
-		self.gnb.fit(X, Y)
+		self.gnb.fit(self.X, self.Y)
 
 		# save model
 		jl.dump(self, self.modelFilename)
 
 	def validate(self):
 		# Importing dataset
-		data = self.data
-		data = data.drop(['username'], 1)
-
-		X = data.drop('bot', 1)
-		Y = data['bot']
+		X = self.X
+		Y = self.Y
 		bScores = cross_val_score(self.gnb, X, Y, cv=10)
-		print('crossvalidated accuracy after NaiveBayesSybilRanker: {}'\
+		print('\tcrossvalidated accuracy after NaiveBayesSybilRanker: {}'\
 			.format(bScores.mean()))
 
 	def getRank(self, nodeName):
@@ -71,7 +66,7 @@ class InstaNaiveBayesSybilRankerFactory:
 		userData = scraper.scrapeUser( username = nodeName)
 		userData.pop(0)
 		detectedClass = self.gnb.predict( [userData] )
-		print("detectedClass = ", detectedClass)
+		print("\tdetectedClass = ", detectedClass)
 		predict_proba = self.gnb.predict_proba( [userData] )
-		print("predict_proba = ", predict_proba)
+		print("\tpredict_proba = ", predict_proba)
 		return predict_proba[0][0]*100

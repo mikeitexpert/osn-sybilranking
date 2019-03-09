@@ -1,21 +1,22 @@
 import SybilRanking as sb
 
-# report classficition accuracy
-sybilRanker = sb.ranker.TwitterNaiveBayesSybilRanker()
-sybilRanker.validate()
+def test_twitter_naivebayes_ranker():
+	# report classficition accuracy
+	sybilRanker = sb.ranker.TwitterNaiveBayesSybilRanker()
+	sybilRanker.validate()
 
-# peform ranking
-twitterUserList = [
-	'WeAreMessi', 
-	'twitterdev',
-	'RepJoeBarton',
-	'HoustonPokeMap',
-]
+	# peform ranking
+	twitterUserList = [
+		'WeAreMessi',
+		'twitterdev',
+		'RepJoeBarton',
+		'HoustonPokeMap',
+	]
 
-print("username,rank")
-for username in twitterUserList:
-	print ('{},{}'.format(
-		username, 
-		sybilRanker.getRank(username))
-	)
-	
+	print("\tusername,rank")
+	for username in twitterUserList:
+		print ('\t{},{}'.format(
+			username,
+			sybilRanker.getRank(username))
+		)
+	return True
