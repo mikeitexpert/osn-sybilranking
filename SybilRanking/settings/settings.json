@@ -1,4 +1,6 @@
 {
 	"proxies": {"http": "http://127.0.0.1:2080", "https": "https://127.0.0.1:2080"},
-	"access_token": "AAAAAAAAAAAAAAAAAAAAACDT3wAAAAAAexbO%2FRFmwIuxwzJZPXOfqHxbDFg%3DrBy3dxLGnSHB5CxSgDGrTR5IC6QoMOrEJq9LpSYOFY3nsuaX6f"
+	"twitter_access_token": "twitter_access_token",
+	"insta_username": "insta_username",
+	"insta_password": "insta_password",
 }
