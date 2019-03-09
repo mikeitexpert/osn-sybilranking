@@ -91,7 +91,7 @@ class InstagramScraper(object):
     def __init__(self, **kwargs):
         default_attr = dict(username='', usernames=[], filename=None,
                             login_user=None, login_pass=None,
-                            destination='./', retain_username=False, interactive=False,
+                            destination='./', retain_username=False, interactive=True,
                             quiet=False, maximum=0, media_metadata=False, latest=False,
                             latest_stamps=False, cookiejar=None,
                             media_types=['image', 'video', 'story-image', 'story-video'],
@@ -649,7 +649,7 @@ class InstagramScraper(object):
 
             # Get the user metadata.
             shared_data = self.get_shared_data(username)
-            return [
+            userData = [
                  shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["username"],
                  shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_follow"]["count"],
                  shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_followed_by"]["count"],
@@ -657,6 +657,8 @@ class InstagramScraper(object):
                  shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_felix_video_timeline"]["count"] +
                  shared_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["count"],
                  ]
+            print("\tuserData = ", userData)
+            return userData
         finally:
             self.quit = True
             self.logout()

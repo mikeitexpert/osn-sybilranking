@@ -21,9 +21,11 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     include_package_data = True,
+    package_dir={'SybilRanking': 'SybilRanking'},
     package_data={
         'SybilRanking': ['model/traindata/*.csv',
-                         'model/modelfiles/*.joblib'
+                         'model/modelfiles/*.joblib',
+                         'settings/settings.json',
                          ],
     },
     # data_files=\
