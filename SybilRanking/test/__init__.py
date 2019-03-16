@@ -4,7 +4,7 @@ from .test_twitter_naivebayes_ranker_factory import test_twitter_naivebayes_rank
 from .test_twitter_naivebayes_ranker import test_twitter_naivebayes_ranker
 from .test_insta_naivebayes_ranker_factory import test_insta_naivebayes_ranker_factory
 from .test_insta_naivebayes_ranker import test_insta_naivebayes_ranker
-
+from .test_insta_dnn_estimator_ranker_factory import test_insta_dnn_estimator_ranker_factory
 def doAllTest():
     allTests = [
             (test_twitter_naivebayes_ranker_factory,
@@ -14,8 +14,9 @@ def doAllTest():
             (test_insta_naivebayes_ranker_factory,
                  'test_insta_naivebayes_ranker_factory'),
             (test_insta_naivebayes_ranker,
-                 'test_insta_naivebayes_ranker')
-
+                 'test_insta_naivebayes_ranker'),
+            (test_insta_dnn_estimator_ranker_factory,
+                 'test_insta_dnn_estimator_ranker_factory')
     ]
     for test, testDesc in allTests:
         doTest(test, testDesc)

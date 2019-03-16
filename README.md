@@ -41,10 +41,14 @@ python -c "import SybilRanking; SybilRanking.test.doAllTest()"
 
 
 # What methods have been considered so far
-Currently, we use simple machine learning techniques such Bernoulli Naive Bayes and we use the probably returned by the classifier for the non-bot class label.
+* Bernoulli Naive Bayes
+* Deep Neural Network (DNN) Estimators
 
 New AI/ML methods are on the way.
 
+# What social media have been considered so far
+* Twitter
+* Instagram
 
 # How to build the package
 You can use the below command to build the whl package or simply use build.sh to build the package.

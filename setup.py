@@ -25,6 +25,7 @@ setuptools.setup(
     package_data={
         'SybilRanking': ['model/traindata/*.csv',
                          'model/modelfiles/*.joblib',
+                         'model/modelfiles/dnn_estimator/*',
                          'settings/settings.json',
                          ],
     },
@@ -63,5 +64,6 @@ setuptools.setup(
         'urllib3',
         'wheel',
         'tqdm',
+        'tensorflow'
     ],
 )
